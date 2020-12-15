@@ -1,0 +1,6 @@
+#!/bin/bash
+read -p 'enter the name user : ' user
+logue=$(ps aux | grep $user | grep sshd |awk '{print $2}'| tail -1)
+sudo kill  $logue
+sudo pkill -u $user
+sudo userdel $user

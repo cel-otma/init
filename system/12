@@ -1,0 +1,1 @@
+sudo du -hd 1 /var

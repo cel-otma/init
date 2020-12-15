@@ -1,0 +1,64 @@
+#!/bin/bash
+c="y"
+while [ $c = "y" ]
+do
+    clear
+	echo "      --1-> Update the Command Line in Vm"
+	echo "      --2-> get your ip"
+	echo "      --3-> add user in Vm "
+	echo "      --4-> delete user  in Vm"
+	echo "      --5-> connecter in ssh"
+	echo "      --6-> the name of school"
+	echo "      --0-> exit"
+	
+	read -p 'enter the choix : ' nom
+	if [ $nom = "6" ]
+	then
+	echo "
+         ########       ########      #########      #########
+                #              #              #      #       #
+                #              #              #              #
+                #       ########      #########              #
+                #              #              #              #
+                #              #              #              #
+            ######      ########      #########              #
+		"
+	fi
+
+	if [ $nom = "1" ]
+	then
+        sudo apt update && sudo apt upgrade -y
+	fi
+
+	if [ $nom = "2" ]
+	then
+		ifconfig enp0s3 | grep "inet " | awk '{print $2}'
+	fi
+
+	if [ $nom = "3" ]
+	then 
+		read -p 'enter name  new user : ' user
+		sudo adduser $user
+	fi
+
+	if [ $nom = "4" ]
+	then 
+		read -p 'enter the name user : ' user
+		pkill $user
+		sudo userdel $user
+	fi
+
+	if [ $nom = "0" ]
+	then
+		exit
+	fi
+
+	if [ $nom = "5" ]
+	then
+		read -p 'enter the name user : ' user
+		read -p 'enter the ip address : ' ip
+		ssh $user@$ip
+	fi
+		
+		read -p 'Continue ? [y] : '
+done

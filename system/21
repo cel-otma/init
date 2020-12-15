@@ -1,0 +1,1 @@
+sudo getent passwd {1000..60000}
